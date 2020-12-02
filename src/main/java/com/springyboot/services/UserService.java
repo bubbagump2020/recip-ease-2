@@ -20,6 +20,10 @@ public class UserService {
 		return ur.findUserById(id);
 	}
 	
+	public User findUserbyEmail(String email) {
+		return ur.findUserByEmail(email);
+	}
+	
 	/**
 	 * Saves a user to the database
 	 * @param user
@@ -36,5 +40,7 @@ public class UserService {
 			return false;
 		}
 	}
+	
+	
 	
 }
