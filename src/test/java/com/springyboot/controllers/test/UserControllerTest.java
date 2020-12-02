@@ -35,9 +35,9 @@ public class UserControllerTest {
 	private UserController uc;
 	
 	private String mockUserJson = "{\"userId\":0, \"email\":\"a@a.net\", \"password\":\"p\"}";
-	User user = new User(0, "a@a.net", "p");
-	User user2 = new User(1, "a2@a.net", "p");
-	
+	User user = new User(0, "a@a.net", "a", "p");
+	User user2 = new User(1, "a2@a.net", "a2", "p");
+	User user3 = new User(2, "a3@a.net", "a3","p");
 	
 	/**
 	 * @author Kevin
@@ -54,9 +54,9 @@ public class UserControllerTest {
 	 */
 	@Test
 	void testCreateNewUserSuccess() throws Exception{
-		Mockito.when(us.save(user)).thenReturn(true);
+		Mockito.when(us.save(user3)).thenReturn(true);
 		this.mockMvc
-			.perform(post("/user/new").contentType(MediaType.APPLICATION_JSON)
+			.perform(post("/users/new").contentType(MediaType.APPLICATION_JSON)
 									  .content(mockUserJson)
 									  .accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isCreated())
