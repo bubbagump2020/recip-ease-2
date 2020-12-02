@@ -27,4 +27,8 @@ public class User {
 	@Column(nullable = false)
 	private String password;
 	
+	public String failLogin() {
+		return new String("Login Failed");
+	}
+	
 }

@@ -24,9 +24,7 @@ public class UserController {
 		super();
 		this.us = us;
 	}
-	// Swagger Annotation
-//	@ApiOperation(value="Creates a new User object and saves to the database",
-//			notes= "The request body should contain a json in the shape of a User object")
+	
 	@PostMapping("/new")
 	public ResponseEntity<String> save(@RequestBody User user){
 		String pwHash = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());

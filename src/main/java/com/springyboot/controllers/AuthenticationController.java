@@ -19,7 +19,12 @@ public class AuthenticationController {
 	private UserService us;
 	
 	@PostMapping("/login")
-	public User login(@RequestBody User user){
-		return new User();
+	public ResponseEntity<User> login(@RequestBody User user){
+		User currentUser = us.findUserbyEmail(user.getEmail());
+		if(BCrypt.checkpw(user.getPassword(), currentUser.getPassword())) {
+			return new ResponseEntity<>(currentUser, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+		}
 	}
 }
