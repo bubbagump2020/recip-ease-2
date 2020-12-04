@@ -17,12 +17,18 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		this.userRepo = userRepo;
 	}
 	
-	@Override
-	public void configure(HttpSecurity http) throws Exception{
-		http.requestMatchers().antMatchers("/users");
-	}
+	/**
+	 * Disables Cross-Site Forgery Request protection.
+	 * That's ok with the implementation of JWT authentication.
+	 */
 	
 	@Override
-	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable();
 	}
+	
+	/**
+	 * Future site of JWT Auth method
+	 */
+	
 }

@@ -29,12 +29,12 @@ public class UserController {
 		this.us = us;
 	}
 	
-	@GetMapping("/")
+	@GetMapping("")
 	public List<User> findAll(){
 		return us.findAll();
 	}
 	
-	@PostMapping("/new")
+	@PostMapping("")
 	public ResponseEntity<String> save(@RequestBody User user){
 		String pwHash = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
 		User persistentUser = new User(0, user.getEmail(), user.getUsername(), pwHash);

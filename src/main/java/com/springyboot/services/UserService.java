@@ -62,6 +62,9 @@ public class UserService {
 		}
 	}
 	
-	
+	public User update(User user) {
+		User findCurrentUser = ur.findByEmail(user.getEmail());
+		return null;
+	}
 	
 }
